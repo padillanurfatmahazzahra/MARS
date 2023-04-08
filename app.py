@@ -13,7 +13,7 @@ DB_NAME=os.environ.get("DB_NAME")
 
 client = MongoClient(MONGODB_URI)
 db =client[DB_NAME]
-app = Flask(_name_)
+app = Flask(__name__)
 
 
 @app.route('/')
@@ -38,5 +38,5 @@ def web_mars_get():
     order_list =list(db.orders.find({},{'_id':False}))
     return jsonify({'orders': order_list})
 
-if _name_ == '_main_':
-    app.run('0.0.0.0', port=5000, debug=True)
+if __name__ == '__main__':
+   app.run('0.0.0.0', port=5000, debug=True)
